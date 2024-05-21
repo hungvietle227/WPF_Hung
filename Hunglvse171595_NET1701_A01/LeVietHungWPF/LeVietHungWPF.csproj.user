@@ -13,6 +13,9 @@
     <Compile Update="frmCustomer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="frmRegister.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ManageCustomer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,6 +28,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="frmCustomer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="frmRegister.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="LoginWindow.xaml">

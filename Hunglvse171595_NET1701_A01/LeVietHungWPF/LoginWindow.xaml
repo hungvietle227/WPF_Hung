@@ -8,7 +8,7 @@
         Title="Login Window"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Height="320"
+        Height="380"
         Width="300">
     <!--WindowStartupLocation="CenterScreen" thì cho nó ra giữa màn hình-->
     <!--ResizeMode="NoResize" thì là không cho nó phóng to hay nhỏ-->
@@ -48,7 +48,7 @@
                 Content="Login"
                 Foreground="White"
                 Background="Black"
-                Margin="0,25"
+                Margin="0,25,0,15"
                 Height="35"
                 Width="250">
             <Button.Style>
@@ -79,5 +79,9 @@
                 </Style>
             </Button.Style>
         </Button>
+        <TextBlock Text="Not a member?" Margin="0,0,0,12" HorizontalAlignment="center" />
+        <Button Content="Register" Width="80" Height="25"
+                x:Name="btnRegister"
+                Click="btnRegister_Click" />
     </StackPanel>
 </Window>

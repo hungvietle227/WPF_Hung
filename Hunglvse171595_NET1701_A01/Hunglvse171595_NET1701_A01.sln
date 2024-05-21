@@ -3,17 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeVietHungWPF", "LeVietHungWPF\LeVietHungWPF.csproj", "{21172D58-82EB-4B4F-A32A-AB8DE4EBC88B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeVietHungWPF", "LeVietHungWPF\LeVietHungWPF.csproj", "{21172D58-82EB-4B4F-A32A-AB8DE4EBC88B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessObject", "BusinessObject\BusinessObject.csproj", "{2336AA10-E699-49B6-ADB9-14EC7DEEFC8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessObject", "BusinessObject\BusinessObject.csproj", "{2336AA10-E699-49B6-ADB9-14EC7DEEFC8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{67719A2C-754B-4DB3-8C18-1569ADC18FAD}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Presentation Layer", "1.Presentation Layer", "{0002C522-ACBC-441C-BFFE-E530C8309250}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Business Layer", "2. Business Layer", "{602AEF95-E35E-43E0-AB85-F1996E215F4D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Data Layer", "3. Data Layer", "{347CDEEB-3D73-4F72-B6C4-4605EA21115C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{67719A2C-754B-4DB3-8C18-1569ADC18FAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,11 +30,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{21172D58-82EB-4B4F-A32A-AB8DE4EBC88B} = {0002C522-ACBC-441C-BFFE-E530C8309250}
-		{2336AA10-E699-49B6-ADB9-14EC7DEEFC8C} = {602AEF95-E35E-43E0-AB85-F1996E215F4D}
-		{67719A2C-754B-4DB3-8C18-1569ADC18FAD} = {347CDEEB-3D73-4F72-B6C4-4605EA21115C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ACD3CF4A-E829-4655-85AE-2E70DBF41344}

@@ -61,7 +61,7 @@ namespace LeVietHungWPF {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/LeVietHungWPF;V1.0.0.0;component/adminscreen.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/LeVietHungWPF;component/adminscreen.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AdminScreen.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

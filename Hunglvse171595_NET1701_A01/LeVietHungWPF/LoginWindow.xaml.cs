@@ -25,5 +25,11 @@ namespace LeVietHungWPF
         {
 
         }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            frmRegister frmRegister = new frmRegister();
+            frmRegister.Show();
+        }
     }
 }

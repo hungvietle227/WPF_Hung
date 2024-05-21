@@ -1,0 +1,12 @@
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\bin\Debug\net8.0\DataAccess.deps.json
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\bin\Debug\net8.0\DataAccess.dll
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\bin\Debug\net8.0\DataAccess.pdb
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\DataAccess.AssemblyInfoInputs.cache
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\DataAccess.AssemblyInfo.cs
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\DataAccess.csproj.CoreCompileInputs.cache
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\DataAccess.sourcelink.json
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\DataAccess.dll
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\refint\DataAccess.dll
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\DataAccess.pdb
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\ref\DataAccess.dll
