@@ -5,8 +5,122 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeVietHungWPF"
         mc:Ignorable="d"
-        Title="frmCustomer" Height="300" Width="300">
-    <Grid>
-        <TextBlock FontSize="32" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Test nè"></TextBlock>
+        Title="frmCustomer"
+        Height="380"
+        Width="630"
+        Loaded="Window_Loaded">
+    <Grid Margin="0,0,0,14">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Label Content="FullName:"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"
+               Margin="10,41,0,0" />
+        <TextBox Grid.Column="1"
+                 Grid.Row="0"
+                 VerticalAlignment="Top"
+                 Margin="5,45,5,0"
+                 x:Name="txtFullName" />
+        <!--Telephone-->
+        <Label Content="Telephone:"
+               Grid.Column="2"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Center"
+               RenderTransformOrigin="0.308,0.428"
+               Margin="0,41,0,0" />
+        <TextBox Grid.Column="3"
+                 VerticalAlignment="Top"
+                 Margin="1,45,10,0"
+                 x:Name="txtTelephone"
+                 RenderTransformOrigin="0.584,0.53" />
+        <!-- Email Address-->
+        <Label Content="Email Address:"
+               Grid.Column="0"
+               Grid.Row="1"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Right"
+               Margin="0,41,0,0" />
+        <TextBox x:Name="txtEmailAddress"
+                 Grid.Column="1"
+                 Grid.Row="1"
+                 VerticalAlignment="Top"
+                 Margin="5,45,5,0" />
+        <!-- Birthday-->
+        <Label Content="Birthday:"
+               Grid.Column="2"
+               Grid.Row="1"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"
+               Margin="14,41,0,0"
+               RenderTransformOrigin="0.372,0.443" />
+        <DatePicker Grid.Column="3"
+                    Grid.Row="1"
+                    VerticalAlignment="Center"
+                    Margin="1,0,10,0"
+                    x:Name="datePicker"
+                    />
+        <!--Status-->
+        <Label Content="Status:"
+               Grid.Column="0"
+               Grid.Row="2"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"
+               Margin="14,41,0,0" />
+        <ComboBox x:Name="cboStatus"
+                  Grid.Column="1"
+                  Grid.Row="2"
+                  VerticalAlignment="Top"
+                  Margin="5,43,5,0" />
+        <!--Password-->
+        <Label Content="Password:"
+               Grid.Column="2"
+               Grid.Row="2"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Center"
+               RenderTransformOrigin="0.253,0.482"
+               Margin="0,41,0,0" />
+        <TextBox Grid.Column="3"
+                 Grid.Row="2"
+                 VerticalAlignment="Top"
+                 Margin="0,45,10,0"
+                 x:Name="txtPassword" />
+        <StackPanel Grid.Row="3"
+                    Grid.ColumnSpan="4"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <Grid Width="150"
+                  HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*" />
+                    <RowDefinition Height="8*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                        Content="Create"
+                        Margin="-20,0,20,0"
+                        x:Name="btnCreate"
+                        Click="btnCreate_Click"
+                        Grid.RowSpan="2" />
+                <Button Grid.Column="1"
+                        Content="Update"
+                        x:Name="btnUpdate"
+                        Margin="10,0,-10,0"
+                        Grid.RowSpan="2"
+                        Click="btnUpdate_Click" />
+            </Grid>
+        </StackPanel>
     </Grid>
 </Window>

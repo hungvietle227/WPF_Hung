@@ -24,3 +24,4 @@ E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\BusinessObject\obj\Debug\net8
 E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\BusinessObject\bin\Debug\net8.0\BusinessObject.runtimeconfig.json
 E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\BusinessObject\obj\Debug\net8.0\BusinessObject.csproj.AssemblyReference.cache
 E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\BusinessObject\obj\Debug\net8.0\BusinessObject.genruntimeconfig.cache
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\BusinessObject\bin\Debug\net8.0\appsettings.json

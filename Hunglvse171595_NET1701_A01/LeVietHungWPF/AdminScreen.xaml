@@ -4,10 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeVietHungWPF"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="AdminScreen"
-        Height="450"
-        Width="800">
+        Height="570"
+        Width="1020"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
@@ -24,7 +26,8 @@
                        FontWeight="Bold"
                        Grid.Row="0" />
         </StackPanel>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1"
+              Margin="0,0,25,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="170" />
                 <ColumnDefinition />
@@ -41,7 +44,7 @@
                            HorizontalAlignment="Left"
                            Height="67"
                            Width="85"
-                           Source="/Resource/logoFPT.jpg"
+                           Source="/logoFPT.jpg"
                            Margin="24,0,0,0" />
                     <Menu Margin="0,20,0,0"
                           Grid.Row="1"
@@ -51,30 +54,78 @@
                                 <VirtualizingStackPanel Orientation="Vertical" />
                             </ItemsPanelTemplate>
                         </Menu.ItemsPanel>
-                        <MenuItem Margin="5,30,0,40"
+                        <MenuItem Margin="5,20,0,40"
                                   FontSize="18"
                                   Header="Customer"
-                                  Click="MenuItem_Click"></MenuItem>
+                                  x:Name="menuCustomer"
+                                  Click="Customer_Click"></MenuItem>
                         <MenuItem Margin="5,0,0,40"
                                   FontSize="18"
+                                  x:Name="menuRoom"
                                   Header="Room"
-                                  Click="MenuItem_Click_1"></MenuItem>
+                                  Click="Roome_Click"></MenuItem>
                         <MenuItem FontSize="18"
                                   Margin="5,0,0,0"
                                   Header="Report Statistic"></MenuItem>
                     </Menu>
                     <Button Content="Log Out"
                             Height="30"
+                            Click="LogOut_Click"
                             Width="80"
-                            Margin="24,262,29,-54"
+                            Margin="24,257,34,-49"
                             Grid.Row="1" />
                 </Grid>
 
             </StackPanel>
-            <Frame Grid.Column="1"
+            <!--<Frame Grid.Column="1"
                    Margin="20,24,30,25"
                    x:Name="main"
-                   NavigationUIVisibility="Hidden" />
+                   NavigationUIVisibility="Hidden" />-->
+            <DataGrid Grid.Column="1"
+                      Margin="10,164,0,25"
+                      FontSize="17"
+                      x:Name="dgData"
+                      SelectionChanged="dgData_SelectionChanged"
+                      MouseDoubleClick="dgData_MouseDoubleClick"
+                      IsReadOnly="True" />
+            <Button Grid.Column="1"
+                    x:Name="btnCreate"
+                    Content="Create"
+                    Background="White"
+                    HorizontalAlignment="Left"
+                    Margin="460,50,0,0"
+                    VerticalAlignment="Top"
+                    Height="32"
+                    Width="90" 
+                    Click="btnCreate_Click"/>
+            <Button Grid.Column="1"
+                    x:Name="btnUpdate"
+                    Click="btnUpdate_Click"
+                    Content="Update"
+                    HorizontalAlignment="Left"
+                    Margin="570,50,0,0"
+                    VerticalAlignment="Top"
+                    Height="32"
+                    Width="90"
+                    Background="White" />
+            <Button Grid.Column="1"
+                    Content="Delete"
+                    x:Name="btnDelete"
+                    HorizontalAlignment="Left"
+                    Margin="680,50,0,0"
+                    VerticalAlignment="Top"
+                    Height="32"
+                    Width="90"
+                    Background="White" />
+            <GroupBox HorizontalAlignment="Left"
+                      Height="94"
+                      Header="Action"
+                      Margin="428,10,0,0"
+                      FontSize="20"
+                      FontWeight="Bold"
+                      VerticalAlignment="Top"
+                      Width="374"
+                      Grid.Column="1" />
         </Grid>
     </Grid>
 </Window>

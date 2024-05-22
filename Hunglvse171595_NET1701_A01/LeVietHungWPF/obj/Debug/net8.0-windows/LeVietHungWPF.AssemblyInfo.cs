@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LeVietHungWPF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3cdb94e7ca996a24e11c852eca71a2064dc92bf2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6cfe81d9c86431ccaf48086c2e23e07fd7178d5")]
 [assembly: System.Reflection.AssemblyProductAttribute("LeVietHungWPF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LeVietHungWPF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

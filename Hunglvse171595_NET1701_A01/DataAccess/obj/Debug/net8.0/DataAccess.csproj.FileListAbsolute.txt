@@ -10,3 +10,8 @@ E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\D
 E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\refint\DataAccess.dll
 E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\DataAccess.pdb
 E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\ref\DataAccess.dll
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\bin\Debug\net8.0\BusinessObject.dll
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\bin\Debug\net8.0\BusinessObject.pdb
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\DataAccess.csproj.AssemblyReference.cache
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\obj\Debug\net8.0\DataAccess.csproj.CopyComplete
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\DataAccess\bin\Debug\net8.0\appsettings.json
