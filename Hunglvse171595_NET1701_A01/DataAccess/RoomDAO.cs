@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Models;
+using DataAccess.DTO;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,35 @@ namespace DataAccess
             using var db = new FuminiHotelManagementContext();
             RoomInformation? roomInfo = db.RoomInformations.FirstOrDefault(c => c.RoomId == ID);
             return roomInfo;
+        }
+        public bool UpdateRoom(RoomInformation room )
+        {
+            try
+            {
+                using var db = new FuminiHotelManagementContext();
+                db.RoomInformations.Update(room);
+                var result = db.SaveChanges();
+                return result > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public bool CreateRoom(RoomInformation room)
+        {
+            try
+            {
+                using var db = new FuminiHotelManagementContext();
+                db.RoomInformations.Add(room);
+                var result = db.SaveChanges();
+                return result > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

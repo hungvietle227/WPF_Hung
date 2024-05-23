@@ -19,6 +19,7 @@ namespace LeVietHungWPF
         ICustomerRepository customerRepository = new CustomerRepository();
         IRoomRepository roomRepository = new RoomRepository();
         private int customerId;
+        private int roomId;
         public AdminScreen()
         {
             InitializeComponent();
@@ -36,17 +37,93 @@ namespace LeVietHungWPF
             dgData.ItemsSource = mapData;
             menuCustomer.IsChecked = true;
             menuRoom.IsChecked = false;
+            roomId = 0;
         }
 
         private void Roome_Click(object sender, RoutedEventArgs e)
         {
             var data = roomRepository.GetAllRoom();
+            var mapData = from test in data
+                          select new CustomeRoom
+                          {
+                              RoomId = test.RoomId,
+
+                              RoomNumber = test.RoomNumber,
+
+                              RoomDetailDescription = test.RoomDetailDescription,
+
+                              RoomMaxCapacity = test.RoomMaxCapacity,
+
+                              RoomTypeName = MapRoomName(test.RoomTypeId),
+
+                              RoomStatus = MapStatus(test.RoomStatus),
+
+                              RoomPricePerDay = test.RoomPricePerDay
+                          };
             menuCustomer.IsChecked = false;
             menuRoom.IsChecked = true;
-            dgData.ItemsSource = data;
+            dgData.ItemsSource = mapData.ToList();
             customerId = 0;
         }
+        private string MapStatus(byte? roomStatus)
+        {
+            if (roomStatus == null)
+            {
+                return null;
+            }
+            else if (roomStatus == 0)
+            {
+                return "Active";
+            }
+            else if (roomStatus == 1)
+            {
+                return "Inactive";
+            }
+            else
+            {
+                throw new InvalidOperationException("Invalid roomStatus value");
+            }
+        }
 
+        private string MapRoomName(int roomTypeId)
+        {
+            if (roomTypeId == 1)
+            {
+                return "Standard room";
+            }
+            else if (roomTypeId == 2)
+            {
+                return "Suite";
+            }
+            else if (roomTypeId == 3)
+            {
+                return "Deluxe room";
+            }
+            else if (roomTypeId == 4)
+            {
+                return "Executive room";
+            }
+            else if (roomTypeId == 5)
+            {
+                return "Family Room";
+            }
+            else if (roomTypeId == 6)
+            {
+                return "Connecting Room";
+            }
+            else if (roomTypeId == 7)
+            {
+                return "Penthouse Suite";
+            }
+            else if (roomTypeId == 8)
+            {
+                return "Bungalow";
+            }
+            else
+            {
+                throw new InvalidOperationException("Invalid RoomName value");
+            }
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadCustomer();
@@ -60,6 +137,30 @@ namespace LeVietHungWPF
             dgData.ItemsSource = mapData;
             menuCustomer.IsChecked = true;
             menuRoom.IsChecked = false;
+        }
+        public void LoadRoom()
+        {
+            var data = roomRepository.GetAllRoom();
+            var mapData = from test in data
+                          select new CustomeRoom
+                          {
+                              RoomId = test.RoomId,
+
+                              RoomNumber = test.RoomNumber,
+
+                              RoomDetailDescription = test.RoomDetailDescription,
+
+                              RoomMaxCapacity = test.RoomMaxCapacity,
+
+                              RoomTypeName = MapRoomName(test.RoomTypeId),
+
+                              RoomStatus = MapStatus(test.RoomStatus),
+
+                              RoomPricePerDay = test.RoomPricePerDay
+                          };
+            dgData.ItemsSource = mapData.ToList();
+            menuCustomer.IsChecked = false;
+            menuRoom.IsChecked = true;
         }
 
         private void dgData_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -97,19 +198,19 @@ namespace LeVietHungWPF
                         LoadCustomer();
                     }
                 }
-                else if (dgData.ItemsSource is List<RoomInformation>)
+                else if (dgData.ItemsSource is List<CustomeRoom>)
                 {
                     // Đang hiển thị danh sách phòng, xử lý cho phòng
-                    RoomInformation selectedRoom = (RoomInformation)dgData.SelectedItem;
+                    CustomeRoom selectedRoom = (CustomeRoom)dgData.SelectedItem;
                     int id = selectedRoom.RoomId;
                     // In ID ra MessageBox hoặc một cơ chế thông báo khác
                     frmRoom frmRoom = new frmRoom();
                     frmRoom.ID = id;
                     var result = frmRoom.ShowDialog();
-                    //if (result == true)
-                    //{
-                    //    LoadCustomer();
-                    //}
+                    if (result == true)
+                    {
+                        LoadRoom();
+                    }
                 }
             }
         }
@@ -124,6 +225,14 @@ namespace LeVietHungWPF
                     customerId = selectedCustomer.CustomerId;
                 }
             }
+            else if (dgData.ItemsSource is List<CustomeRoom>)
+            {
+                if (dgData.SelectedItem != null)
+                {
+                    CustomeRoom selectedRoom = (CustomeRoom)dgData.SelectedItem;
+                    roomId = selectedRoom.RoomId;
+                }
+            }
         }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
@@ -135,12 +244,17 @@ namespace LeVietHungWPF
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            if (customerId.ToString().IsNullOrEmpty() || customerId == 0)
+            if ((customerId.ToString().IsNullOrEmpty() || customerId == 0) && menuCustomer.IsChecked == true)
             {
                 MessageBox.Show("Please pick member to update");
                 return;
             }
-            else
+            if ((roomId.ToString().IsNullOrEmpty() || roomId == 0) && menuRoom.IsChecked == true)
+            {
+                MessageBox.Show("Please pick room to update");
+                return;
+            }
+            if(dgData.ItemsSource is List<CustomCustomer>)
             {
                 frmCustomer frmCustomer = new frmCustomer();
                 frmCustomer.ID = customerId;
@@ -150,16 +264,43 @@ namespace LeVietHungWPF
                     LoadCustomer();
                 }
             }
+            if (dgData.ItemsSource is List<CustomeRoom>)
+            {
+                // In ID ra MessageBox hoặc một cơ chế thông báo khác
+                frmRoom frmRoom = new frmRoom();
+                frmRoom.ID = roomId;
+                var result = frmRoom.ShowDialog();
+                if (result == true)
+                {
+                    LoadRoom();
+                }
+            }
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            frmCustomer frmCustomer = new frmCustomer();
-            var result = frmCustomer.ShowDialog();
-            if (result == true)
+            if (dgData.SelectedItem != null)
             {
-                LoadCustomer();
+                if (dgData.ItemsSource is List<CustomCustomer>)
+                {
+                    frmCustomer frmCustomer = new frmCustomer();
+                    var result = frmCustomer.ShowDialog();
+                    if (result == true)
+                    {
+                        LoadCustomer();
+                    }
+                }
+                else if (dgData.ItemsSource is List<CustomeRoom>)
+                {
+                    frmRoom frmRoom = new frmRoom();
+                    var result = frmRoom.ShowDialog();
+                    if (result == true)
+                    {
+                        LoadRoom();
+                    }
+                }
             }
+
         }
     }
 }

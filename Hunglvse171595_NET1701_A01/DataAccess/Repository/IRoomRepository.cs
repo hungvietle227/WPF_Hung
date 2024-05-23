@@ -11,5 +11,7 @@ namespace DataAccess.Repository
     {
         IEnumerable<RoomInformation> GetAllRoom();
         RoomInformation? GetRoomInfoByID(string id);
+        bool UpdateRoom(RoomInformation room);
+        bool CreateRoom(RoomInformation room);
     }
 }

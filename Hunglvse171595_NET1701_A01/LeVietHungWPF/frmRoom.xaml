@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LeVietHungWPF"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="frmRoom"
         Height="440"
         Width="810">
@@ -31,6 +32,7 @@
                  Grid.Row="0"
                  VerticalAlignment="Center"
                  HorizontalAlignment="Stretch"
+                 x:Name="txtRoomNumber"
                  Margin="5" />
         <!--Telephone-->
         <Label Content="Description:"
@@ -42,7 +44,7 @@
                      Margin="5,0,10,0">
             <FlowDocument>
                 <Paragraph>
-                    <Run />
+                    <Run x:Name="txtDescription" />
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
@@ -56,6 +58,7 @@
         <TextBox Grid.Column="1"
                  Grid.Row="1"
                  VerticalAlignment="Center"
+                 x:Name="txtMaxCapacity"
                  HorizontalAlignment="Stretch"
                  Margin="5" />
         <!--Status-->
@@ -67,9 +70,8 @@
         <ComboBox Grid.Column="3"
                   Grid.Row="1"
                   VerticalAlignment="Center"
-                  Margin="5,0,10,0"
-                  DisplayMemberPath="RoomTypeName"
-                  SelectedValuePath="RoomTypeId" />
+                  x:Name="cboRoomType"
+                  Margin="5,0,10,0" />
         <!-- Birthday-->
         <Label Content="Room Status:"
                Grid.Column="0"
@@ -80,6 +82,7 @@
                Margin="0,44,25,0" />
         <ComboBox Grid.Column="1"
                   Grid.Row="2"
+                  x:Name="cboRoomStatus"
                   VerticalAlignment="Top"
                   Margin="5,46,5,0" />
         <!--Password-->
@@ -94,6 +97,7 @@
         <TextBox Grid.Column="3"
                  Grid.Row="2"
                  VerticalAlignment="Top"
+                 x:Name="txtRoomPrice"
                  Margin="0,46,0,0"
                  HorizontalAlignment="Center"
                  Width="270" />
@@ -115,11 +119,13 @@
                         Content="Create"
                         Margin="-20,0,20,0"
                         x:Name="btnCreate"
+                        Click="btnCreate_Click"
                         Grid.RowSpan="2" />
                 <Button Grid.Column="1"
                         Content="Update"
                         x:Name="btnUpdate"
                         Margin="10,0,-10,0"
+                        Click="btnUpdate_Click"
                         Grid.RowSpan="2" />
             </Grid>
         </StackPanel>
