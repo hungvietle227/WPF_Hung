@@ -135,6 +135,22 @@
                     Click="btnFilter_Click"
                     Height="30"
                     Width="95" />
+            <TextBox Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     Height="28"
+                     Margin="445,119,0,0"
+                     TextWrapping="Wrap"
+                     x:Name="txtSearch"
+                     VerticalAlignment="Top"
+                     Width="200" />
+            <Button Grid.Column="1"
+                    Content="Search"
+                    HorizontalAlignment="Left"
+                    Margin="680,119,0,0"
+                    x:Name="btnSearch"
+                    VerticalAlignment="Top"
+                    Height="28"
+                    Width="80" />
         </Grid>
     </Grid>
 </Window>

@@ -1,5 +1,6 @@
 ﻿using BusinessObject.Models;
 using DataAccess.Repository;
+using DataAccess.Util;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -64,59 +65,79 @@ namespace LeVietHungWPF
                 btnUpdate.IsEnabled = false;
                 List<string> statusOptions = new List<string> { "Active", "Inactive" };
                 cboStatus.ItemsSource = statusOptions;
-                cboStatus.SelectedValue= "Active";
+                cboStatus.SelectedValue = "Active";
                 datePicker.SelectedDate = DateTime.Now;
             }
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            var customer = customerRepository.GetCustomerByID(ID.ToString());
-            if (customer != null)
+            var validate = ValidationCommon.ValidateCustomer(txtFullName.Text, txtTelephone.Text, txtEmailAddress.Text, datePicker.SelectedDate!.Value, cboStatus.SelectedItem.ToString(), txtPassword.Text);
+            if (validate.isValid == false)
             {
-                customer.Telephone = txtTelephone.Text;
-                customer.CustomerFullName = txtFullName.Text;
-                customer.Password = txtPassword.Text;
-                DateTime selectedDate = datePicker.SelectedDate!.Value;
-                System.DateOnly dateOnly = new System.DateOnly(selectedDate.Year, selectedDate.Month, selectedDate.Day);
-                customer.CustomerBirthday = dateOnly;
-                customer.CustomerStatus = cboStatus.SelectedItem.ToString() == "Active" ? (byte)1 : (byte)0;
-            }
-            var result = customerRepository.UpdateCustomer(customer);
-            if (result)
-            {
-                MessageBox.Show("Update successfully");
-                this.DialogResult = true;
-                this.Close();
+                MessageBox.Show(validate.message);
+                return;
             }
             else
             {
-                MessageBox.Show("Something went wrong when updated");
+                var customer = customerRepository.GetCustomerByID(ID.ToString());
+                if (customer != null)
+                {
+                    customer.EmailAddress = txtEmailAddress.Text;
+                    customer.Telephone = txtTelephone.Text;
+                    customer.CustomerFullName = txtFullName.Text;
+                    customer.Password = txtPassword.Text;
+                    DateTime selectedDate = datePicker.SelectedDate!.Value;
+                    System.DateOnly dateOnly = new System.DateOnly(selectedDate.Year, selectedDate.Month, selectedDate.Day);
+                    customer.CustomerBirthday = dateOnly;
+                    customer.CustomerStatus = cboStatus.SelectedItem.ToString() == "Active" ? (byte)1 : (byte)0;
+                }
+                var result = customerRepository.UpdateCustomer(customer);
+                if (result)
+                {
+                    MessageBox.Show("Update successfully");
+                    this.DialogResult = true;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong when updated");
+                }
             }
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            Customer customer = new Customer();
-            customer.Telephone = txtTelephone.Text.Trim();
-            customer.CustomerFullName = txtFullName.Text.Trim();
-            customer.CustomerStatus = cboStatus.SelectedItem.ToString() == "Active" ? (byte)1 : (byte)0;
-            DateTime selectedDate = datePicker.SelectedDate!.Value;
-            System.DateOnly dateOnly = new System.DateOnly(selectedDate.Year, selectedDate.Month, selectedDate.Day);
-            customer.CustomerBirthday = dateOnly;
-            customer.EmailAddress = txtEmailAddress.Text.Trim();
-            customer.Password = txtPassword.Text.Trim();
-            var result = customerRepository.CreateCustomer(customer);
-            if (result)
+            var validate = ValidationCommon.ValidateCustomer(txtFullName.Text, txtTelephone.Text, txtEmailAddress.Text, datePicker.SelectedDate!.Value, cboStatus.SelectedItem.ToString(), txtPassword.Text);
+            if (validate.isValid == false)
             {
-                MessageBox.Show("Create successfully");
-                this.DialogResult = true;
-                this.Close();
+                MessageBox.Show(validate.message);
+                return;
             }
             else
             {
-                MessageBox.Show("Something went wrong when create");
+                Customer customer = new Customer();
+                customer.Telephone = txtTelephone.Text.Trim();
+                customer.CustomerFullName = txtFullName.Text.Trim();
+                customer.CustomerStatus = cboStatus.SelectedItem.ToString() == "Active" ? (byte)1 : (byte)0;
+                DateTime selectedDate = datePicker.SelectedDate!.Value;
+                System.DateOnly dateOnly = new System.DateOnly(selectedDate.Year, selectedDate.Month, selectedDate.Day);
+                customer.CustomerBirthday = dateOnly;
+                customer.EmailAddress = txtEmailAddress.Text.Trim();
+                customer.Password = txtPassword.Text.Trim();
+                var result = customerRepository.CreateCustomer(customer);
+                if (result)
+                {
+                    MessageBox.Show("Create successfully");
+                    this.DialogResult = true;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong when create");
+                }
             }
+
         }
     }
 }

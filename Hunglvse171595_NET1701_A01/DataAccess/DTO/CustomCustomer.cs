@@ -18,7 +18,7 @@ namespace DataAccess.DTO
 
         public DateOnly? CustomerBirthday { get; set; }
 
-        public byte? CustomerStatus { get; set; }
+        public string? CustomerStatus { get; set; }
 
         public string? Password { get; set; }
 

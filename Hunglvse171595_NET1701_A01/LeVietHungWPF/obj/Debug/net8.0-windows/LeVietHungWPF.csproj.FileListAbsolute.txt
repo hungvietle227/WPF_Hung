@@ -250,3 +250,9 @@ F:\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\obj\Debug\net8.0-windows
 F:\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\obj\Debug\net8.0-windows\MemberScreen.baml
 F:\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\obj\Debug\net8.0-windows\BookingDetailPage.g.cs
 F:\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\obj\Debug\net8.0-windows\BookingDetailPage.baml
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\obj\Debug\net8.0-windows\BookingDetailPage.g.cs
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\obj\Debug\net8.0-windows\MemberScreen.g.cs
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\obj\Debug\net8.0-windows\StatisticPage.g.cs
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\obj\Debug\net8.0-windows\BookingDetailPage.baml
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\obj\Debug\net8.0-windows\MemberScreen.baml
+E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\obj\Debug\net8.0-windows\StatisticPage.baml

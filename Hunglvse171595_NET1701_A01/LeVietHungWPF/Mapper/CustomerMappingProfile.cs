@@ -9,7 +9,26 @@ namespace WPF.Utilities.Mappers
     {
         public CustomerMappingProfile()
         {
-            CreateMap<Customer, CustomCustomer>().ReverseMap();
+            CreateMap<Customer, CustomCustomer>().ForMember(dest => dest.CustomerStatus, opt => opt.MapFrom(src => MapStatus(src.CustomerStatus))).ReverseMap();
+        }
+        private string MapStatus(byte? CustomerStatus)
+        {
+            if (CustomerStatus == null)
+            {
+                return null;
+            }
+            else if (CustomerStatus == 0)
+            {
+                return "InActive";
+            }
+            else if (CustomerStatus == 1)
+            {
+                return "Active";
+            }
+            else
+            {
+                throw new InvalidOperationException("Invalid roomStatus value");
+            }
         }
     }
 }

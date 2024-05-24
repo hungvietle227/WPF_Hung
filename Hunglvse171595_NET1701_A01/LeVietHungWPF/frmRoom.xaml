@@ -120,7 +120,9 @@
                         Margin="-20,0,20,0"
                         x:Name="btnCreate"
                         Click="btnCreate_Click"
-                        Grid.RowSpan="2" />
+                        Grid.RowSpan="2"
+                        Height="30"
+                        VerticalAlignment="Top" />
                 <Button Grid.Column="1"
                         Content="Update"
                         x:Name="btnUpdate"

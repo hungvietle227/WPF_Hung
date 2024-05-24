@@ -347,5 +347,6 @@ namespace LeVietHungWPF
             statisticPage.ShowDialog();
 
         }
+
     }
 }

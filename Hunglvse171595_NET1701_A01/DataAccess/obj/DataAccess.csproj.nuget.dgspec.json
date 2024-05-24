@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\DataAccess\\DataAccess.csproj": {}
+    "E:\\Ass1_Prn\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\DataAccess\\DataAccess.csproj": {}
   },
   "projects": {
-    "F:\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\BusinessObject\\BusinessObject.csproj": {
+    "E:\\Ass1_Prn\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\BusinessObject\\BusinessObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\BusinessObject\\BusinessObject.csproj",
+        "projectUniqueName": "E:\\Ass1_Prn\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\BusinessObject\\BusinessObject.csproj",
         "projectName": "BusinessObject",
-        "projectPath": "F:\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\BusinessObject\\BusinessObject.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "F:\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\BusinessObject\\obj\\",
+        "projectPath": "E:\\Ass1_Prn\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\BusinessObject\\BusinessObject.csproj",
+        "packagesPath": "C:\\Users\\levie_sutv1l0\\.nuget\\packages\\",
+        "outputPath": "E:\\Ass1_Prn\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\BusinessObject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\levie_sutv1l0\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -89,20 +89,20 @@
         }
       }
     },
-    "F:\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\DataAccess\\DataAccess.csproj": {
+    "E:\\Ass1_Prn\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "E:\\Ass1_Prn\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "F:\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "F:\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\DataAccess\\obj\\",
+        "projectPath": "E:\\Ass1_Prn\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\DataAccess\\DataAccess.csproj",
+        "packagesPath": "C:\\Users\\levie_sutv1l0\\.nuget\\packages\\",
+        "outputPath": "E:\\Ass1_Prn\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\levie_sutv1l0\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -117,8 +117,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "F:\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\BusinessObject\\BusinessObject.csproj": {
-                "projectPath": "F:\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\BusinessObject\\BusinessObject.csproj"
+              "E:\\Ass1_Prn\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\BusinessObject\\BusinessObject.csproj": {
+                "projectPath": "E:\\Ass1_Prn\\Ass1_Prn221\\Hunglvse171595_NET1701_A01\\BusinessObject\\BusinessObject.csproj"
               }
             }
           }

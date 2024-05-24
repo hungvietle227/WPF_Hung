@@ -1,6 +1,7 @@
 ﻿using BusinessObject.Models;
 using DataAccess.DTO;
 using DataAccess.Repository;
+using DataAccess.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,51 +63,25 @@ namespace LeVietHungWPF
                 btnUpdate.IsEnabled = false;
                 List<string> statusOptions = new List<string> { "Active", "Inactive" };
                 cboRoomStatus.ItemsSource = statusOptions;
-                cboRoomStatus.SelectedValue = "Active";
+                cboRoomStatus.SelectedItem = "Active";
                 List<string> roomType = new List<string> { "Standard room", "Suite", "Deluxe room", "Executive room", "Family Room", "Connecting Room", "Penthouse Suite", "Bungalow" };
                 cboRoomType.ItemsSource = roomType;
-                cboRoomStatus.SelectedValue = "Standard room";
+                cboRoomType.SelectedItem = "Standard room";
             }
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            List<string> roomType = new List<string> { "Standard room", "Suite", "Deluxe room", "Executive room", "Family Room", "Connecting Room", "Penthouse Suite", "Bungalow" };
-            var room = new RoomInformation();
-            room.RoomDetailDescription = txtDescription.Text.Trim();
-            var capacity = txtMaxCapacity.Text.Trim();
-            int.TryParse(capacity, out var maxCapacity);
-            room.RoomMaxCapacity = maxCapacity;
-            room.RoomNumber = txtRoomNumber.Text.Trim();
-            var price = txtRoomPrice.Text.Trim();
-            int.TryParse(price, out var roomPrice);
-            room.RoomPricePerDay = roomPrice;
-            room.RoomStatus = cboRoomStatus.SelectedItem.ToString() == "Active" ? (byte)1 : (byte)0;
-            string selectedRoomType = cboRoomType.SelectedItem.ToString();
-            int selectedIndex = roomType.IndexOf(selectedRoomType);
-            if (selectedIndex >= 0)
+            var validate = ValidationCommon.ValidateRoom(txtRoomNumber.Text.Trim(), txtDescription.Text.Trim(), txtMaxCapacity.Text.Trim(), cboRoomType.SelectedItem.ToString(), cboRoomStatus.SelectedItem.ToString(), txtRoomPrice.Text.Trim());
+            if (validate.isValid == false)
             {
-                room.RoomTypeId = selectedIndex + 1;
-            }
-            var result = roomRepository.CreateRoom(room);
-            if (result)
-            {
-                MessageBox.Show("Create successfully");
-                this.DialogResult = true;
-                this.Close();
+                MessageBox.Show(validate.message);
+                return;
             }
             else
             {
-                MessageBox.Show("Something went wrong when created");
-            }
-        }
-
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            List<string> roomType = new List<string> { "Standard room", "Suite", "Deluxe room", "Executive room", "Family Room", "Connecting Room", "Penthouse Suite", "Bungalow" };
-            var room = roomRepository.GetRoomInfoByID(ID.ToString());
-            if (room != null)
-            {
+                List<string> roomType = new List<string> { "Standard room", "Suite", "Deluxe room", "Executive room", "Family Room", "Connecting Room", "Penthouse Suite", "Bungalow" };
+                var room = new RoomInformation();
                 room.RoomDetailDescription = txtDescription.Text.Trim();
                 var capacity = txtMaxCapacity.Text.Trim();
                 int.TryParse(capacity, out var maxCapacity);
@@ -122,17 +97,61 @@ namespace LeVietHungWPF
                 {
                     room.RoomTypeId = selectedIndex + 1;
                 }
+                var result = roomRepository.CreateRoom(room);
+                if (result)
+                {
+                    MessageBox.Show("Create successfully");
+                    this.DialogResult = true;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong when created");
+                }
             }
-            var result = roomRepository.UpdateRoom(room);
-            if (result)
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            var validate = ValidationCommon.ValidateRoom(txtRoomNumber.Text.Trim(), txtDescription.Text.Trim(), txtMaxCapacity.Text.Trim(), cboRoomType.SelectedItem.ToString(), cboRoomStatus.SelectedItem.ToString(), txtRoomPrice.Text.Trim());
+            if (validate.isValid == false)
             {
-                MessageBox.Show("Update successfully");
-                this.DialogResult = true;
-                this.Close();
+                MessageBox.Show(validate.message);
+                return;
             }
             else
             {
-                MessageBox.Show("Something went wrong when updated");
+                List<string> roomType = new List<string> { "Standard room", "Suite", "Deluxe room", "Executive room", "Family Room", "Connecting Room", "Penthouse Suite", "Bungalow" };
+                var room = roomRepository.GetRoomInfoByID(ID.ToString());
+                if (room != null)
+                {
+                    room.RoomDetailDescription = txtDescription.Text.Trim();
+                    var capacity = txtMaxCapacity.Text.Trim();
+                    int.TryParse(capacity, out var maxCapacity);
+                    room.RoomMaxCapacity = maxCapacity;
+                    room.RoomNumber = txtRoomNumber.Text.Trim();
+                    var price = txtRoomPrice.Text.Trim();
+                    int.TryParse(price, out var roomPrice);
+                    room.RoomPricePerDay = roomPrice;
+                    room.RoomStatus = cboRoomStatus.SelectedItem.ToString() == "Active" ? (byte)1 : (byte)0;
+                    string selectedRoomType = cboRoomType.SelectedItem.ToString();
+                    int selectedIndex = roomType.IndexOf(selectedRoomType);
+                    if (selectedIndex >= 0)
+                    {
+                        room.RoomTypeId = selectedIndex + 1;
+                    }
+                }
+                var result = roomRepository.UpdateRoom(room);
+                if (result)
+                {
+                    MessageBox.Show("Update successfully");
+                    this.DialogResult = true;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong when updated");
+                }
             }
         }
     }
