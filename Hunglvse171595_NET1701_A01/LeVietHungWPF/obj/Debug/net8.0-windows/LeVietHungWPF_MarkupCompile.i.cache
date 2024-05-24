@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\obj\Debug\net8.0-windows\
+F:\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\obj\Debug\net8.0-windows\
 LeVietHungWPF
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-E:\Ass1_Prn\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\App.xaml
-7398812023
+F:\Ass1_Prn221\Hunglvse171595_NET1701_A01\LeVietHungWPF\App.xaml
+101736948543
 
-13-1891398859
-247-1092737972
-AdminScreen.xaml;frmCustomer.xaml;frmRegister.xaml;frmRoom.xaml;LoginWindow.xaml;ManageCustomer.xaml;ManageRoom.xaml;
+16-1841906525
+247-1691368205
+AdminScreen.xaml;BookingDetailPage.xaml;frmCustomer.xaml;frmRegister.xaml;frmRoom.xaml;LoginWindow.xaml;ManageCustomer.xaml;ManageRoom.xaml;MemberScreen.xaml;StatisticPage.xaml;
 
-False
+True
 

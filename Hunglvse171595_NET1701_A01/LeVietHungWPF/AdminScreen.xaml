@@ -66,12 +66,10 @@
                                   Click="Roome_Click"></MenuItem>
                         <MenuItem FontSize="18"
                                   Margin="5,0,0,0"
-                                  Header="Booking Reservation"></MenuItem>
-                        
-                        <MenuItem FontSize="18"
-                                  Margin="5,40,0,0"
-                                  Header="Report Statistic"></MenuItem>
-                     
+                                  Header="Report Statistic"
+                                  x:Name="menuReport"
+                                  Click="menuReport_Click"></MenuItem>
+
                     </Menu>
                     <Button Content="Log Out"
                             Height="30"
@@ -82,10 +80,6 @@
                 </Grid>
 
             </StackPanel>
-            <!--<Frame Grid.Column="1"
-                   Margin="20,24,30,25"
-                   x:Name="main"
-                   NavigationUIVisibility="Hidden" />-->
             <DataGrid Grid.Column="1"
                       Margin="10,164,0,25"
                       FontSize="17"
@@ -101,8 +95,8 @@
                     Margin="460,50,0,0"
                     VerticalAlignment="Top"
                     Height="32"
-                    Width="90" 
-                    Click="btnCreate_Click"/>
+                    Width="90"
+                    Click="btnCreate_Click" />
             <Button Grid.Column="1"
                     x:Name="btnUpdate"
                     Click="btnUpdate_Click"
@@ -125,12 +119,22 @@
             <GroupBox HorizontalAlignment="Left"
                       Height="94"
                       Header="Action"
+                      x:Name="groupBox"
                       Margin="428,10,0,0"
                       FontSize="20"
                       FontWeight="Bold"
                       VerticalAlignment="Top"
                       Width="374"
                       Grid.Column="1" />
+            <Button Grid.Column="1"
+                    Content="Filter By Date"
+                    x:Name="btnFilter"
+                    HorizontalAlignment="Left"
+                    Margin="45,117,0,0"
+                    VerticalAlignment="Top"
+                    Click="btnFilter_Click"
+                    Height="30"
+                    Width="95" />
         </Grid>
     </Grid>
 </Window>

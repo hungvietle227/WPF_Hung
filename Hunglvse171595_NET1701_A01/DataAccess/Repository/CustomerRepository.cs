@@ -33,5 +33,10 @@ namespace DataAccess.Repository
         {
             return CustomerDAO.Instance.CreateCustomer(customerCreate);
         }
+
+        public Customer? GetCustomerByEmail(string email)
+        {
+            return CustomerDAO.Instance.GetCustomerByEmail(email);
+        }
     }
 }

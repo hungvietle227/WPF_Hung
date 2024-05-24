@@ -18,6 +18,7 @@ namespace LeVietHungWPF
         private IMapper mapper; // Khai báo IMapper ở đây
         ICustomerRepository customerRepository = new CustomerRepository();
         IRoomRepository roomRepository = new RoomRepository();
+        IBookingReservationRepository bookRepository = new BookingReservationRepository();
         private int customerId;
         private int roomId;
         public AdminScreen()
@@ -32,16 +33,24 @@ namespace LeVietHungWPF
 
         private void Customer_Click(object sender, RoutedEventArgs e)
         {
+            btnCreate.Visibility = Visibility.Visible;
+            btnDelete.Visibility = Visibility.Visible;
+            btnUpdate.Visibility = Visibility.Visible;
             var data = customerRepository.GetAllCustomer();
             var mapData = data.Select(c => mapper.Map<CustomCustomer>(c)).ToList();
             dgData.ItemsSource = mapData;
             menuCustomer.IsChecked = true;
             menuRoom.IsChecked = false;
+            menuReport.IsChecked = false;
             roomId = 0;
+            btnFilter.Visibility = Visibility.Collapsed;
         }
 
         private void Roome_Click(object sender, RoutedEventArgs e)
         {
+            btnCreate.Visibility = Visibility.Visible;
+            btnDelete.Visibility = Visibility.Visible;
+            btnUpdate.Visibility = Visibility.Visible;
             var data = roomRepository.GetAllRoom();
             var mapData = from test in data
                           select new CustomeRoom
@@ -62,8 +71,10 @@ namespace LeVietHungWPF
                           };
             menuCustomer.IsChecked = false;
             menuRoom.IsChecked = true;
+            menuReport.IsChecked = false;
             dgData.ItemsSource = mapData.ToList();
             customerId = 0;
+            btnFilter.Visibility = Visibility.Collapsed;
         }
         private string MapStatus(byte? roomStatus)
         {
@@ -73,11 +84,11 @@ namespace LeVietHungWPF
             }
             else if (roomStatus == 0)
             {
-                return "Active";
+                return "InActive";
             }
             else if (roomStatus == 1)
             {
-                return "Inactive";
+                return "Active";
             }
             else
             {
@@ -279,9 +290,8 @@ namespace LeVietHungWPF
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            if (dgData.SelectedItem != null)
-            {
-                if (dgData.ItemsSource is List<CustomCustomer>)
+            
+                if (menuCustomer.IsChecked)
                 {
                     frmCustomer frmCustomer = new frmCustomer();
                     var result = frmCustomer.ShowDialog();
@@ -290,7 +300,7 @@ namespace LeVietHungWPF
                         LoadCustomer();
                     }
                 }
-                else if (dgData.ItemsSource is List<CustomeRoom>)
+                else if (menuRoom.IsChecked)
                 {
                     frmRoom frmRoom = new frmRoom();
                     var result = frmRoom.ShowDialog();
@@ -299,7 +309,42 @@ namespace LeVietHungWPF
                         LoadRoom();
                     }
                 }
-            }
+        }
+
+        private void menuReport_Click(object sender, RoutedEventArgs e)
+        {
+            btnCreate.Visibility = Visibility.Collapsed;
+            btnDelete.Visibility = Visibility.Collapsed;
+            btnUpdate.Visibility = Visibility.Collapsed;
+            btnFilter.Visibility = Visibility.Visible;
+            groupBox.Visibility = Visibility.Collapsed;
+            dgData.ItemsSource = null;
+            var data = bookRepository.GetAllBookingReservation();
+            var mapData = from test in data
+                          select new CustomBookingReservation
+                          {
+                              BookingDate = test.BookingDate,
+
+                              BookingReservationId = test.BookingReservationId,
+
+                              BookingStatus = MapStatus(test.BookingStatus),
+
+                              CustomerId = test.CustomerId,
+
+                              TotalPrice = test.TotalPrice
+                          };
+            dgData.ItemsSource = mapData.ToList();
+            menuCustomer.IsChecked = false;
+            menuRoom.IsChecked = false;
+            menuReport.IsChecked = true;
+            roomId = 0;
+            customerId = 0;
+        }
+
+        private void btnFilter_Click(object sender, RoutedEventArgs e)
+        {
+            StatisticPage statisticPage = new StatisticPage();
+            statisticPage.ShowDialog();
 
         }
     }

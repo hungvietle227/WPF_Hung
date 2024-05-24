@@ -99,5 +99,12 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
+
+        public Customer? GetCustomerByEmail(string email)
+        {
+            using var db = new FuminiHotelManagementContext();
+            Customer? customer = db.Customers.FirstOrDefault(c => c.EmailAddress == email);
+            return customer;
+        }
     }
 }

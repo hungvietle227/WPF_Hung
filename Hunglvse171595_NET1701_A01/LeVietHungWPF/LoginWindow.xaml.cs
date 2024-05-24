@@ -41,9 +41,11 @@ namespace LeVietHungWPF
                     }
                     else if (login == Role.Customer)
                     {
-                        frmCustomer frmCustomer = new frmCustomer();
+                        var customer = customerRepository.GetCustomerByEmail(txtEmail.Text);
+                        MemberScreen memberScreen = new MemberScreen();
+                        memberScreen.ID = customer.CustomerId;
                         this.Close();
-                        frmCustomer.ShowDialog();
+                        memberScreen.ShowDialog();
                     }
                     else
                     {

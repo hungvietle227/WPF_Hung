@@ -10,6 +10,9 @@
     <Compile Update="AdminScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="BookingDetailPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="frmCustomer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,9 +28,18 @@
     <Compile Update="ManageRoom.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MemberScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="StatisticPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AdminScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="BookingDetailPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="frmCustomer.xaml">
@@ -46,6 +58,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ManageRoom.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MemberScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="StatisticPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
