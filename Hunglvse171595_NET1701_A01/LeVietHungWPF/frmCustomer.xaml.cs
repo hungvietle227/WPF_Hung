@@ -25,6 +25,8 @@ namespace LeVietHungWPF
     public partial class frmCustomer : Window
     {
         public int ID { get; set; }
+        public bool isMember { get; set; }
+
         ICustomerRepository customerRepository = new CustomerRepository();
         public frmCustomer()
         {
@@ -35,6 +37,11 @@ namespace LeVietHungWPF
         {
             if (ID != 0)
             {
+                if (isMember)
+                {
+                    cboStatus.IsEnabled = false;
+                    txtEmailAddress.IsEnabled = false;
+                }
                 var customer = customerRepository.GetCustomerByID(ID.ToString());
                 if (customer != null)
                 {

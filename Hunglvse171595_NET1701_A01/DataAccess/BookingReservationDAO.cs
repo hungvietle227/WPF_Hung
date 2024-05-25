@@ -1,4 +1,5 @@
 ﻿using BusinessObject.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,6 +68,21 @@ namespace DataAccess
             int.TryParse(id, out var ID);
             using var db = new FuminiHotelManagementContext();
             listBookingReservation = db.BookingReservations.Where(c => c.CustomerId == ID).ToList();
+            return listBookingReservation;
+        }
+
+        public List<BookingReservation> SearchBookingReservation(string searchValue)
+        {
+            var listBookingReservation = new List<BookingReservation>();
+            try
+            {
+                using var db = new FuminiHotelManagementContext();
+                listBookingReservation = db.BookingReservations.Where(a => a.TotalPrice.ToString().Contains(searchValue)).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
             return listBookingReservation;
         }
     }

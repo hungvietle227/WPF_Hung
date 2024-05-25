@@ -114,6 +114,7 @@
                     Margin="680,50,0,0"
                     VerticalAlignment="Top"
                     Height="32"
+                    Click="btnDelete_Click"
                     Width="90"
                     Background="White" />
             <GroupBox HorizontalAlignment="Left"
@@ -137,19 +138,22 @@
                     Width="95" />
             <TextBox Grid.Column="1"
                      HorizontalAlignment="Left"
-                     Height="28"
+                     Height="20"
                      Margin="445,119,0,0"
+                     FontSize="12"
                      TextWrapping="Wrap"
                      x:Name="txtSearch"
                      VerticalAlignment="Top"
                      Width="200" />
             <Button Grid.Column="1"
                     Content="Search"
+                    Padding="2"
                     HorizontalAlignment="Left"
                     Margin="680,119,0,0"
+                    Click="btnSearch_Click"
                     x:Name="btnSearch"
                     VerticalAlignment="Top"
-                    Height="28"
+                    Height="20"
                     Width="80" />
         </Grid>
     </Grid>

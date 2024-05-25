@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Forms;
 using WPF.Utilities.Mappers;
 
 namespace LeVietHungWPF
@@ -44,6 +45,7 @@ namespace LeVietHungWPF
             menuReport.IsChecked = false;
             roomId = 0;
             btnFilter.Visibility = Visibility.Collapsed;
+            groupBox.Visibility = Visibility.Visible;
         }
 
         private void Roome_Click(object sender, RoutedEventArgs e)
@@ -75,6 +77,7 @@ namespace LeVietHungWPF
             dgData.ItemsSource = mapData.ToList();
             customerId = 0;
             btnFilter.Visibility = Visibility.Collapsed;
+            groupBox.Visibility = Visibility.Visible;
         }
         private string MapStatus(byte? roomStatus)
         {
@@ -138,6 +141,7 @@ namespace LeVietHungWPF
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadCustomer();
+            btnFilter.Visibility = Visibility.Collapsed;
         }
 
         public void LoadCustomer()
@@ -257,15 +261,15 @@ namespace LeVietHungWPF
         {
             if ((customerId.ToString().IsNullOrEmpty() || customerId == 0) && menuCustomer.IsChecked == true)
             {
-                MessageBox.Show("Please pick member to update");
+                System.Windows.MessageBox.Show("Please pick member to update");
                 return;
             }
             if ((roomId.ToString().IsNullOrEmpty() || roomId == 0) && menuRoom.IsChecked == true)
             {
-                MessageBox.Show("Please pick room to update");
+                System.Windows.MessageBox.Show("Please pick room to update");
                 return;
             }
-            if(dgData.ItemsSource is List<CustomCustomer>)
+            if (dgData.ItemsSource is List<CustomCustomer>)
             {
                 frmCustomer frmCustomer = new frmCustomer();
                 frmCustomer.ID = customerId;
@@ -290,25 +294,25 @@ namespace LeVietHungWPF
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            
-                if (menuCustomer.IsChecked)
+
+            if (menuCustomer.IsChecked)
+            {
+                frmCustomer frmCustomer = new frmCustomer();
+                var result = frmCustomer.ShowDialog();
+                if (result == true)
                 {
-                    frmCustomer frmCustomer = new frmCustomer();
-                    var result = frmCustomer.ShowDialog();
-                    if (result == true)
-                    {
-                        LoadCustomer();
-                    }
+                    LoadCustomer();
                 }
-                else if (menuRoom.IsChecked)
+            }
+            else if (menuRoom.IsChecked)
+            {
+                frmRoom frmRoom = new frmRoom();
+                var result = frmRoom.ShowDialog();
+                if (result == true)
                 {
-                    frmRoom frmRoom = new frmRoom();
-                    var result = frmRoom.ShowDialog();
-                    if (result == true)
-                    {
-                        LoadRoom();
-                    }
+                    LoadRoom();
                 }
+            }
         }
 
         private void menuReport_Click(object sender, RoutedEventArgs e)
@@ -348,5 +352,170 @@ namespace LeVietHungWPF
 
         }
 
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (menuCustomer.IsChecked)
+            {
+                if (txtSearch.Text.IsNullOrEmpty())
+                {
+                    dgData.ItemsSource = null;
+                    var data = customerRepository.GetAllCustomer();
+                    var mapData = data.Select(c => mapper.Map<CustomCustomer>(c)).ToList();
+                    dgData.ItemsSource = mapData;
+                }
+                else
+                {
+                    dgData.ItemsSource = null;
+                    var data = customerRepository.SearchCustomer(txtSearch.Text);
+                    var mapData = data.Select(c => mapper.Map<CustomCustomer>(c)).ToList();
+                    dgData.ItemsSource = mapData;
+                }
+            }
+            if (menuRoom.IsChecked)
+            {
+                if (txtSearch.Text.IsNullOrEmpty())
+                {
+                    dgData.ItemsSource = null;
+                    var data = roomRepository.GetAllRoom();
+                    var mapData = from test in data
+                                  select new CustomeRoom
+                                  {
+                                      RoomId = test.RoomId,
+
+                                      RoomNumber = test.RoomNumber,
+
+                                      RoomDetailDescription = test.RoomDetailDescription,
+
+                                      RoomMaxCapacity = test.RoomMaxCapacity,
+
+                                      RoomTypeName = MapRoomName(test.RoomTypeId),
+
+                                      RoomStatus = MapStatus(test.RoomStatus),
+
+                                      RoomPricePerDay = test.RoomPricePerDay
+                                  };
+                    dgData.ItemsSource = mapData.ToList();
+                }
+                else
+                {
+                    dgData.ItemsSource = null;
+                    var data = roomRepository.SearchRoom(txtSearch.Text);
+                    var mapData = from test in data
+                                  select new CustomeRoom
+                                  {
+                                      RoomId = test.RoomId,
+
+                                      RoomNumber = test.RoomNumber,
+
+                                      RoomDetailDescription = test.RoomDetailDescription,
+
+                                      RoomMaxCapacity = test.RoomMaxCapacity,
+
+                                      RoomTypeName = MapRoomName(test.RoomTypeId),
+
+                                      RoomStatus = MapStatus(test.RoomStatus),
+
+                                      RoomPricePerDay = test.RoomPricePerDay
+                                  };
+                    dgData.ItemsSource = mapData.ToList();
+                }
+            }
+            if (menuReport.IsChecked)
+            {
+                if (txtSearch.Text.IsNullOrEmpty())
+                {
+                    dgData.ItemsSource = null;
+                    var data = bookRepository.GetAllBookingReservation();
+                    var mapData = from test in data
+                                  select new CustomBookingReservation
+                                  {
+                                      BookingDate = test.BookingDate,
+
+                                      BookingReservationId = test.BookingReservationId,
+
+                                      BookingStatus = MapStatus(test.BookingStatus),
+
+                                      CustomerId = test.CustomerId,
+
+                                      TotalPrice = test.TotalPrice
+                                  };
+                    dgData.ItemsSource = mapData.ToList();
+                }
+                else
+                {
+                    dgData.ItemsSource = null;
+                    var data = bookRepository.SearchBookingReservation(txtSearch.Text);
+                    var mapData = from test in data
+                                  select new CustomBookingReservation
+                                  {
+                                      BookingDate = test.BookingDate,
+
+                                      BookingReservationId = test.BookingReservationId,
+
+                                      BookingStatus = MapStatus(test.BookingStatus),
+
+                                      CustomerId = test.CustomerId,
+
+                                      TotalPrice = test.TotalPrice
+                                  };
+                    dgData.ItemsSource = mapData.ToList();
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (menuCustomer.IsChecked)
+            {
+                if (customerId == 0)
+                {
+                    System.Windows.MessageBoxResult result = System.Windows.MessageBox.Show("Please pick member to delete");
+                    return;
+                }
+                else
+                {
+                    System.Windows.MessageBoxResult result = System.Windows.MessageBox.Show("Do you want to delete this member?", "Confirm Delete", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
+                    if (result == System.Windows.MessageBoxResult.Yes)
+                    {
+                        var deleteSuccess = customerRepository.DeleteCustomer(customerId);
+                        if (deleteSuccess == false)
+                        {
+                            System.Windows.MessageBox.Show("Delete fail");
+                        }
+                        LoadCustomer();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+
+            if (menuRoom.IsChecked)
+            {
+                if (roomId == 0)
+                {
+                    System.Windows.MessageBoxResult result = System.Windows.MessageBox.Show("Please pick room to delete");
+                    return;
+                }
+                else
+                {
+                    System.Windows.MessageBoxResult result = System.Windows.MessageBox.Show("Do you want to delete this room?", "Confirm Delete", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Question);
+                    if (result == System.Windows.MessageBoxResult.Yes)
+                    {
+                        var deleteSuccess = roomRepository.DeleteRoom(roomId);
+                        if (deleteSuccess == false)
+                        {
+                            System.Windows.MessageBox.Show("Delete fail");
+                        }
+                        LoadRoom();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+        }
     }
 }

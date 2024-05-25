@@ -16,5 +16,7 @@ namespace DataAccess.Repository
         bool UpdateCustomer(Customer customerUpdate);
         bool CreateCustomer(Customer customerCreate);
         Customer? GetCustomerByEmail(string email);
+        List<Customer> SearchCustomer(string searchValue);
+        bool DeleteCustomer(int id);
     }
 }

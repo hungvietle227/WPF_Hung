@@ -34,6 +34,7 @@ namespace LeVietHungWPF
         {
             frmCustomer frmCustomer = new frmCustomer();
             frmCustomer.ID = ID;
+            frmCustomer.isMember = true;
             var result = frmCustomer.ShowDialog();
         }
 
@@ -99,6 +100,13 @@ namespace LeVietHungWPF
                 CustomBookingReservation selectedRoom = (CustomBookingReservation)dgData.SelectedItem;
                 bookingReservationID = selectedRoom.BookingReservationId;
             }
+        }
+
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            this.Close();
         }
     }
 }

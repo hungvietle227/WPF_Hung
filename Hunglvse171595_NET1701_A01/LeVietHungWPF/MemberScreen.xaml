@@ -24,6 +24,7 @@
                     Height="30"
                     FontSize="15"
                     x:Name="btnLogOut"
+                    Click="btnLogOut_Click"
                     FontWeight="Bold"
                     Margin="20 0 0 0"
                     Width="90" />
@@ -43,6 +44,7 @@
                   IsReadOnly="True"
                   x:Name="dgData"
                   SelectionChanged="dgData_SelectionChanged"
+                  FontSize="17"
                   Grid.Row="2">
         </DataGrid>
         <Button Content="Button"

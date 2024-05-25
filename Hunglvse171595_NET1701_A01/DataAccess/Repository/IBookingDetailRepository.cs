@@ -10,5 +10,6 @@ namespace DataAccess.Repository
     public interface IBookingDetailRepository
     {
         List<BookingDetail>? GetBookDetailByBookingReservationID(string id);
+        List<BookingDetail> SearchBookingDetail(string searchValue);
     }
 }

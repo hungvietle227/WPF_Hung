@@ -33,5 +33,20 @@ namespace DataAccess
             List<BookingDetail>? bookingDetail = db.BookingDetails.Where(c => c.BookingReservationId == ID).ToList();
             return bookingDetail;
         }
+
+        public List<BookingDetail> SearchBookingDetail(string searchValue)
+        {
+            var listBookingDetail = new List<BookingDetail>();
+            try
+            {
+                using var db = new FuminiHotelManagementContext();
+                listBookingDetail = db.BookingDetails.Where(a => a.RoomId.ToString() == searchValue || a.ActualPrice.ToString() == searchValue).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return listBookingDetail;
+        }
     }
 }

@@ -14,6 +14,11 @@ namespace DataAccess.Repository
             return RoomDAO.Instance.CreateRoom(room);
         }
 
+        public bool DeleteRoom(int id)
+        {
+            return RoomDAO.Instance.DeleteRoom(id);
+        }
+
         public IEnumerable<RoomInformation> GetAllRoom()
         {
             return RoomDAO.Instance.GetAllRoom();
@@ -22,6 +27,11 @@ namespace DataAccess.Repository
         public RoomInformation? GetRoomInfoByID(string id)
         {
             return RoomDAO.Instance.GetRoomInfoByID(id);
+        }
+
+        public List<RoomInformation> SearchRoom(string searchValue)
+        {
+            return RoomDAO.Instance.SearchRoom(searchValue);
         }
 
         public bool UpdateRoom(RoomInformation room)

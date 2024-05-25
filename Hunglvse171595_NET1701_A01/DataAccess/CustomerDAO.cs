@@ -106,5 +106,37 @@ namespace DataAccess
             Customer? customer = db.Customers.FirstOrDefault(c => c.EmailAddress == email);
             return customer;
         }
+
+        public List<Customer> SearchCustomer(string searchValue)
+        {
+            var listCustomer = new List<Customer>();
+            try
+            {
+                using var db = new FuminiHotelManagementContext();
+                listCustomer = db.Customers.Include(a => a.BookingReservations).Where(a=> a.CustomerFullName.Contains(searchValue) || 
+                a.EmailAddress.Contains(searchValue)).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return listCustomer;
+        }
+
+        public bool DeleteCustomer(int id)
+        {
+            try
+            {
+                using var db = new FuminiHotelManagementContext();
+                var customer = db.Customers.FirstOrDefault(a => a.CustomerId == id);
+                db.Customers.Remove(customer);
+                var result = db.SaveChanges();
+                return result > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

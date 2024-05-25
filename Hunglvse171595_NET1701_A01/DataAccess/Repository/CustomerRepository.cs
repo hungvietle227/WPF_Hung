@@ -38,5 +38,15 @@ namespace DataAccess.Repository
         {
             return CustomerDAO.Instance.GetCustomerByEmail(email);
         }
+
+        public List<Customer> SearchCustomer(string searchValue)
+        {
+            return CustomerDAO.Instance.SearchCustomer(searchValue);
+        }
+
+        public bool DeleteCustomer(int id)
+        {
+            return CustomerDAO.Instance.DeleteCustomer(id);
+        }
     }
 }

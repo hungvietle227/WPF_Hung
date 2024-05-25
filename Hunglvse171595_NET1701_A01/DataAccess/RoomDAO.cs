@@ -75,5 +75,37 @@ namespace DataAccess
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<RoomInformation> SearchRoom(string searchValue)
+        {
+            var listRoom = new List<RoomInformation>();
+            try
+            {
+                using var db = new FuminiHotelManagementContext();
+                listRoom = db.RoomInformations.Where(a => a.RoomNumber == (searchValue) ||
+                a.RoomMaxCapacity.ToString() == searchValue).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return listRoom;
+        }
+
+        public bool DeleteRoom(int id)
+        {
+            try
+            {
+                using var db = new FuminiHotelManagementContext();
+                var room = db.RoomInformations.FirstOrDefault(a => a.RoomId == id);
+                db.RoomInformations.Remove(room);
+                var result = db.SaveChanges();
+                return result > 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

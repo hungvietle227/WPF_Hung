@@ -12,12 +12,27 @@
     <Grid>
         <TextBlock Text="Booking Detail"
                    HorizontalAlignment="Center"
-                   Margin="0 20 0 0"
-                   FontSize="20"
+                   Margin="0,40,0,325"
+                   FontSize="24"
                    FontWeight="Bold" />
         <DataGrid Margin="10,164,10,25"
                   FontSize="17"
                   x:Name="dgData"
                   IsReadOnly="True" />
+        <TextBox HorizontalAlignment="Left"
+                 Height="25"
+                 Margin="430,114,0,0"
+                 TextWrapping="Wrap"
+                 x:Name="txtSearch"
+                 VerticalAlignment="Top"
+                 Width="195" />
+        <Button Content="Search"
+                HorizontalAlignment="Left"
+                x:Name="btnSearch"
+                Height="25"
+                Click="btnSearch_Click"
+                Margin="665,114,0,0"
+                VerticalAlignment="Top"
+                Width="100" />
     </Grid>
 </Window>

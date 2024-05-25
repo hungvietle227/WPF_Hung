@@ -13,5 +13,10 @@ namespace DataAccess.Repository
         {
             return BookingDetailDAO.Instance.GetBookDetailByBookingReservationID(id);
         }
+
+        public List<BookingDetail> SearchBookingDetail(string searchValue)
+        {
+            return BookingDetailDAO.Instance.SearchBookingDetail(searchValue);
+        }
     }
 }
